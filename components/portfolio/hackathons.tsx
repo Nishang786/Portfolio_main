@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
@@ -23,14 +25,14 @@ export function HackathonsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.22 }}
             transition={{ duration: 0.7, delay: index * 0.08 }}
-            className="surface-ring glass-panel group relative overflow-hidden rounded-[32px] p-7 sm:p-8"
+            className="surface-ring glass-panel group relative overflow-hidden rounded-[32px] p-5 sm:p-7 md:p-8"
           >
             <div className={`absolute inset-0 bg-gradient-to-br ${item.accent} opacity-70`} />
             <div className="absolute inset-px rounded-[31px] bg-slate-950/78" />
 
             <div className="relative flex h-full flex-col">
               <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-slate-950/50">
-                <div className="relative h-56 sm:h-64">
+                <div className="relative h-40 sm:h-52 md:h-64">
                   <Image
                     src={item.logoSrc}
                     alt={item.logoAlt}
@@ -43,21 +45,21 @@ export function HackathonsSection() {
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.14),transparent_48%)]" />
                 </div>
 
-                <div className="absolute inset-x-0 top-0 flex items-start justify-between p-5 sm:p-6">
+                <div className="absolute inset-x-0 top-0 flex items-start justify-between p-4 sm:p-5 md:p-6">
                   <div className="max-w-[70%]">
                     <p className="text-xs uppercase tracking-[0.28em] text-slate-200/80">
                       Hackathon Host
                     </p>
-                    <h3 className="mt-2 font-heading text-2xl font-semibold text-white drop-shadow-sm sm:text-3xl">
+                    <h3 className="mt-2 font-heading text-xl font-semibold text-white drop-shadow-sm sm:text-2xl md:text-3xl">
                       {item.host}
                     </h3>
                   </div>
-                  <div className="rounded-full border border-white/15 bg-slate-950/45 p-3 text-slate-100 backdrop-blur-sm transition-colors duration-300 group-hover:text-cyan-200">
+                  <div className="rounded-full border border-white/15 bg-slate-950/45 p-2.5 text-slate-100 backdrop-blur-sm transition-colors duration-300 group-hover:text-cyan-200 sm:p-3">
                     <ArrowUpRight className="h-5 w-5" />
                   </div>
                 </div>
 
-                <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 md:p-6">
                   <div className="inline-flex rounded-full border border-white/15 bg-slate-950/45 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-slate-200/85 backdrop-blur-sm">
                     {item.title}
                   </div>
@@ -107,7 +109,6 @@ export function HackathonsSection() {
                   </span>
                 ))}
               </div>
-
             </div>
           </motion.article>
         ))}

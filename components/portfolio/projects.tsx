@@ -79,17 +79,23 @@ export function ProjectsSection() {
                   Streamlit
                 </span>
               </div>
-              <div className="relative aspect-[21/9] w-full">
-                <iframe
-                  src={streamlitProject.embedUrl}
-                  title={streamlitProject.title}
-                  className="h-full w-full border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer"
-                  allow="clipboard-read; clipboard-write; fullscreen; web-share"
-                  sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
-                />
-              </div>
+                <div className="px-5 py-5 md:hidden">
+                  <p className="text-sm leading-7 text-slate-300">
+                    The live dashboard opens best on larger screens. On mobile, use the
+                    button below to open it directly.
+                  </p>
+                </div>
+                <div className="relative hidden aspect-[21/9] w-full md:block">
+                  <iframe
+                    src={streamlitProject.embedUrl}
+                    title={streamlitProject.title}
+                    className="h-full w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    allow="clipboard-read; clipboard-write; fullscreen; web-share"
+                    sandbox="allow-forms allow-scripts allow-same-origin allow-popups"
+                  />
+                </div>
             </div>
           </div>
         </div>
