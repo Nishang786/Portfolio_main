@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Github } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { hackathonItems } from "@/data/portfolio";
 
@@ -109,17 +108,6 @@ export function HackathonsSection() {
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <MagneticButton href={item.repoUrl} variant="secondary" external>
-                  <span className="inline-flex items-center gap-2">
-                    <Github className="h-4 w-4" />
-                    GitHub
-                  </span>
-                </MagneticButton>
-                <MagneticButton href={item.demoUrl} variant="ghost" external>
-                  Live Demo
-                </MagneticButton>
-              </div>
             </div>
           </motion.article>
         ))}

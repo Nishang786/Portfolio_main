@@ -14,31 +14,35 @@ export function FloatingNav({ items }: FloatingNavProps) {
   const [activeId, setActiveId] = useState(items[0]?.id ?? "home");
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((entryA, entryB) => entryB.intersectionRatio - entryA.intersectionRatio);
+    const updateActiveSection = () => {
+      const activationLine = window.innerHeight * 0.32;
+      let candidateId = items[0]?.id ?? "home";
 
-        if (visibleEntries[0]?.target.id) {
-          setActiveId(visibleEntries[0].target.id);
+      for (const item of items) {
+        const element = document.getElementById(item.id);
+
+        if (!element) {
+          continue;
         }
-      },
-      {
-        threshold: [0.15, 0.35, 0.6],
-        rootMargin: "-35% 0px -45% 0px"
+
+        const rect = element.getBoundingClientRect();
+
+        if (rect.top <= activationLine) {
+          candidateId = item.id;
+        }
       }
-    );
 
-    items.forEach((item) => {
-      const element = document.getElementById(item.id);
+      setActiveId(candidateId);
+    };
 
-      if (element) {
-        observer.observe(element);
-      }
-    });
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
 
-    return () => observer.disconnect();
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, [items]);
 
   return (

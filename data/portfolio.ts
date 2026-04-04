@@ -30,6 +30,7 @@ export type ProjectItem = {
   tech: string[];
   repoUrl: string;
   demoUrl: string;
+  embedUrl?: string;
   accent: string;
   preview: string[];
 };
@@ -260,23 +261,7 @@ export const projectItems: ProjectItem[] = [
       "End-to-end reproducible pipeline from raw CSVs to model artifact",
     ],
   },
-  {
-    title: "LSTM Stock Price Prediction System",
-    summary:
-      "I built a deep learning time-series forecasting system combining LSTM sequence modeling with live financial sentiment analysis to predict short-term stock price movements.",
-    impact:
-      "Integrated market data from financial APIs with NLP-derived sentiment signals to add behavioral context beyond price history alone.",
-    metrics: ["LSTM sequence model", "Sentiment-augmented features", "Streamlit live dashboard"],
-    tech: ["Python", "TensorFlow", "LSTM", "Streamlit", "Alpaca API", "NLP", "Sentiment Analysis"],
-    repoUrl: "https://github.com/nishanglingalwar/stock-price-prediction",
-    demoUrl: "",
-    accent: "from-amber-500/25 via-orange-500/10 to-transparent",
-    preview: [
-      "LSTM-based multi-step sequence forecasting on historical OHLCV data",
-      "Sentiment scoring pipeline on financial news and social signals",
-      "Live Streamlit dashboard with model predictions and confidence intervals",
-    ],
-  },
+  
   {
     title: "Weather & Renewable Energy Analytics Dashboard",
     summary:
@@ -284,10 +269,11 @@ export const projectItems: ProjectItem[] = [
     impact:
       "Provided operational and sustainability insights across energy and climate datasets through modular, production-ready visualization components.",
     metrics: ["Multi-source data ingestion", "Geographic + time-series views", "Modular dashboard architecture"],
-    tech: ["Python", "Streamlit", "Bokeh", "Pandas", "Plotly", "Geospatial Mapping", "ETL"],
-    repoUrl: "https://github.com/nishanglingalwar/weather-energy-dashboard",
+    tech: ["Streamlit", "Python", "Bokeh", "Pandas", "Plotly"],
+    repoUrl: "https://github.com/Nishang786/Meteorological-Data-Analysis",
     demoUrl: "",
-    accent: "from-green-500/25 via-emerald-500/10 to-transparent",
+    embedUrl: "https://grouphnci.streamlit.app/?embed=true",
+    accent: "from-cyan-500/25 via-emerald-500/10 to-transparent",
     preview: [
       "Interactive geographic heatmaps for energy output and weather distribution",
       "Time-series anomaly detection and trend decomposition views",
@@ -377,13 +363,7 @@ export const achievementItems: AchievementItem[] = [
       "Placed in the national top 15 in an SAE-governed engineering simulation event focused on computer-aided analysis, structural modeling, and performance design — competing against teams from across India.",
     icon: "award",
   },
-  {
-    title: "First Class Honors — B.Tech with Minor in AI & ML",
-    year: "2024",
-    description:
-      "Graduated with First Class Honors, maintaining strong academic performance across software engineering, data systems, and AI coursework throughout a four-year program.",
-    icon: "star",
-  },
+
 ];
 
 
@@ -423,20 +403,20 @@ export const educationItems: EducationItem[] = [
 export const socialLinks: SocialLink[] = [
   {
     label: "Email",
-    value: "hello@nishanglingalwar.com",
-    href: "mailto:hello@nishanglingalwar.com",
+    value: "nishang786@gmail.com",
+    href: "mailto:nishang786@gmail.com",
     icon: "mail",
   },
   {
     label: "LinkedIn",
     value: "linkedin.com/in/nishang-lingalwar",
-    href: "https://linkedin.com/in/nishang-lingalwar",
+    href: "https://www.linkedin.com/in/nishang-lingalwar-0ba87b3b3/r",
     icon: "linkedin",
   },
   {
     label: "GitHub",
-    value: "github.com/nishanglingalwar",
-    href: "https://github.com/nishanglingalwar",
+    value: "github.com/Nishang786",
+    href: "https://github.com/Nishang786",
     icon: "github",
   },
 ];

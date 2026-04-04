@@ -119,9 +119,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 GitHub
               </span>
             </MagneticButton>
-            <MagneticButton href={project.demoUrl !== "" ? project.demoUrl : ""} variant="ghost" external>
-              Live Demo
-            </MagneticButton>
           </div>
         </div>
       </div>

@@ -68,7 +68,7 @@ export function HeroSection() {
             <div className="absolute inset-0 bg-grid opacity-[0.14]" />
             <div className="relative h-full min-h-[560px] overflow-hidden rounded-[30px] border border-white/10 bg-slate-950/45 sm:min-h-[660px]">
               <Image
-                src="/photo.jfif"
+                src="/me.jpeg"
                 alt="Nishang Lingalwar portrait"
                 fill
                 priority
@@ -77,7 +77,14 @@ export function HeroSection() {
               />
               <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.05)_0%,rgba(2,6,23,0.35)_100%)]" />
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                
+                <div className="max-w-sm rounded-[24px] border border-white/10 bg-slate-950/50 px-4 py-3 backdrop-blur-sm">
+                  <p className="text-xs uppercase tracking-[0.em] text-slate-400">
+                    Spiti Valley, Himachal Pradesh, India
+                  </p>
+                  <p className="mt-2 text-sm leading-6 text-slate-200">
+                    Decoding the peaks: Finding clarity in the cold, hard data.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
