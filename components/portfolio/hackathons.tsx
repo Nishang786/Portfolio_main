@@ -1,11 +1,10 @@
 "use client";
 
-"use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
+import { MagneticButton } from "@/components/ui/magnetic-button";
 import { SectionShell } from "@/components/ui/section-shell";
 import { hackathonItems } from "@/data/portfolio";
 
@@ -67,7 +66,13 @@ export function HackathonsSection() {
               </div>
 
               <p className="mt-6 text-base leading-8 text-slate-300">{item.summary}</p>
-              <p className="mt-4 text-sm leading-7 text-slate-400">{item.impact}</p>
+
+              <div className="mt-5 rounded-[24px] border border-white/10 bg-slate-900/45 p-4">
+                <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
+                  Outcome
+                </p>
+                <p className="mt-3 text-sm leading-7 text-slate-300">{item.impact}</p>
+              </div>
 
               <div className="mt-6 flex flex-wrap gap-2">
                 {item.metrics.map((metric) => (
@@ -108,6 +113,15 @@ export function HackathonsSection() {
                     {tech}
                   </span>
                 ))}
+              </div>
+
+              <div className="mt-auto flex flex-wrap gap-3 pt-8">
+                <MagneticButton href={item.repoUrl} variant="secondary" external>
+                  <span className="inline-flex items-center gap-2">
+                    <Github className="h-4 w-4" />
+                    GitHub
+                  </span>
+                </MagneticButton>
               </div>
             </div>
           </motion.article>

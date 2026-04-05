@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
 import { useRef } from "react";
 
 import { MagneticButton } from "@/components/ui/magnetic-button";
 import type { ProjectItem } from "@/data/portfolio";
+import { useHasFinePointer } from "@/lib/use-has-fine-pointer";
 
 type ProjectCardProps = {
   project: ProjectItem;
@@ -16,10 +17,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const rotateX = useMotionValue(0);
   const rotateY = useMotionValue(0);
+  const shouldReduceMotion = useReducedMotion();
+  const hasFinePointer = useHasFinePointer();
+  const canTilt = hasFinePointer && !shouldReduceMotion;
   const smoothRotateX = useSpring(rotateX, { stiffness: 140, damping: 20, mass: 0.5 });
   const smoothRotateY = useSpring(rotateY, { stiffness: 140, damping: 20, mass: 0.5 });
 
   const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!canTilt) {
+      return;
+    }
+
     const bounds = ref.current?.getBoundingClientRect();
 
     if (!bounds) {
@@ -34,6 +42,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   };
 
   const resetTilt = () => {
+    if (!canTilt) {
+      return;
+    }
+
     rotateX.set(0);
     rotateY.set(0);
   };
@@ -43,9 +55,18 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       ref={ref}
       initial={{ opacity: 0, y: 26 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={canTilt ? { y: -8 } : undefined}
       viewport={{ once: true, amount: 0.22 }}
       transition={{ duration: 0.7, delay: index * 0.08 }}
-      style={{ rotateX: smoothRotateX, rotateY: smoothRotateY, transformStyle: "preserve-3d" }}
+      style={
+        canTilt
+          ? {
+              rotateX: smoothRotateX,
+              rotateY: smoothRotateY,
+              transformStyle: "preserve-3d"
+            }
+          : undefined
+      }
       onPointerMove={handlePointerMove}
       onPointerLeave={resetTilt}
       className="group [perspective:1200px]"
@@ -69,7 +90,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
 
           <p className="mt-5 text-base leading-8 text-slate-300">{project.summary}</p>
-          <p className="mt-4 text-sm leading-7 text-slate-400">{project.impact}</p>
+          <div className="mt-5 rounded-[24px] border border-white/10 bg-slate-900/45 p-4">
+            <p className="text-[11px] uppercase tracking-[0.28em] text-slate-500">
+              Outcome
+            </p>
+            <p className="mt-3 text-sm leading-7 text-slate-300">{project.impact}</p>
+          </div>
 
           <div className="mt-6 flex flex-wrap gap-2">
             {project.metrics.map((metric) => (
@@ -112,7 +138,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-3 pt-8">
             <MagneticButton href={project.repoUrl} variant="secondary" external>
               <span className="inline-flex items-center gap-2">
                 <Github className="h-4 w-4" />

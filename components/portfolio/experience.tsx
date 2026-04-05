@@ -15,6 +15,7 @@ export function ExperienceSection() {
       description="I want the pattern to be obvious quickly: large datasets, measurable performance gains, and systems that move from model logic into usable workflows."
     >
       <div className="relative">
+        <div className="absolute left-[15px] top-8 h-[calc(100%-4rem)] w-px bg-[linear-gradient(180deg,rgba(34,211,238,0.45),rgba(139,92,246,0.32),rgba(255,255,255,0.04))] lg:hidden" />
         <div className="absolute left-4 top-0 hidden h-full w-px bg-[linear-gradient(180deg,rgba(34,211,238,0.45),rgba(139,92,246,0.4),rgba(255,255,255,0.04))] lg:left-1/2 lg:block lg:-translate-x-1/2" />
         <div className="grid gap-10">
           {experienceItems.map((item, index) => {
@@ -38,7 +39,7 @@ export function ExperienceSection() {
 
                 <div
                   className={cn(
-                    "ml-10 rounded-[30px] border border-white/10 bg-white/5 p-7 shadow-panel backdrop-blur-xl lg:ml-0",
+                    "surface-ring glass-panel ml-10 rounded-[30px] p-7 lg:ml-0",
                     isEven ? "lg:order-1" : "lg:order-3"
                   )}
                 >

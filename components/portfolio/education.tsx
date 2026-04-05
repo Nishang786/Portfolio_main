@@ -12,7 +12,7 @@ export function EducationSection() {
       id="education"
       eyebrow="Education"
       title="An academic base that reinforces applied engineering work."
-      description="The academic trajectory is not ornamental here. It directly supports Nishang’s depth in AI, analytics, and production-focused systems design."
+      description="The academic trajectory is not ornamental here. It directly supports my depth in AI, analytics, and production-focused systems design."
     >
       <div className="grid gap-6 lg:grid-cols-2">
         {educationItems.map((item, index) => (

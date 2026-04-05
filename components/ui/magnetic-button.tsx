@@ -1,11 +1,12 @@
 "use client";
 
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { useRef } from "react";
 
 import { cn } from "@/lib/utils";
+import { useHasFinePointer } from "@/lib/use-has-fine-pointer";
 
 type MagneticButtonProps = {
   href: string;
@@ -25,10 +26,17 @@ export function MagneticButton({
   const ref = useRef<HTMLAnchorElement | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+  const shouldReduceMotion = useReducedMotion();
+  const hasFinePointer = useHasFinePointer();
+  const canAnimate = hasFinePointer && !shouldReduceMotion;
   const springX = useSpring(x, { stiffness: 180, damping: 18, mass: 0.35 });
   const springY = useSpring(y, { stiffness: 180, damping: 18, mass: 0.35 });
 
   const handlePointerMove = (event: React.PointerEvent<HTMLAnchorElement>) => {
+    if (!canAnimate) {
+      return;
+    }
+
     const element = ref.current;
 
     if (!element) {
@@ -44,6 +52,10 @@ export function MagneticButton({
   };
 
   const handlePointerLeave = () => {
+    if (!canAnimate) {
+      return;
+    }
+
     x.set(0);
     y.set(0);
   };
@@ -56,10 +68,11 @@ export function MagneticButton({
       rel={external ? "noreferrer" : undefined}
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
-      style={{ x: springX, y: springY }}
+      style={canAnimate ? { x: springX, y: springY } : undefined}
+      whileHover={canAnimate ? { y: -3 } : undefined}
       whileTap={{ scale: 0.98 }}
       className={cn(
-        "group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60",
+        "group relative inline-flex items-center gap-2 overflow-hidden rounded-full px-5 py-3 text-sm font-semibold tracking-wide transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/60 sm:px-6",
         variant === "primary" &&
           "bg-[linear-gradient(135deg,rgba(8,145,178,0.95),rgba(59,130,246,0.95),rgba(124,58,237,0.92))] text-white shadow-glow",
         variant === "secondary" &&

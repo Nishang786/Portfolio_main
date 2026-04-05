@@ -22,7 +22,7 @@ export function BackToTop() {
         <motion.button
           type="button"
           aria-label="Back to top"
-          className="fixed bottom-6 right-6 z-[70] inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 text-white shadow-glow backdrop-blur-xl transition hover:border-cyan-400/40 hover:text-cyan-200"
+          className="fixed bottom-20 right-4 z-[70] inline-flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-slate-900/80 text-white shadow-glow backdrop-blur-xl transition hover:border-cyan-400/40 hover:text-cyan-200 sm:right-6 md:bottom-6"
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}

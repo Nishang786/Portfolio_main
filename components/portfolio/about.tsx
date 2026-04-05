@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, GraduationCap, Radar, Workflow } from "lucide-react";
 
 import { SectionShell } from "@/components/ui/section-shell";
-import { aboutHighlights } from "@/data/portfolio";
+import { aboutHighlights, recruiterNote } from "@/data/portfolio";
 
 const cards = [
   {
@@ -35,7 +35,7 @@ export function AboutSection() {
       title="I focus on real-world AI utility with a technically sharp approach."
       description="I bring a strong academic base and a product-minded approach to AI, data, and software systems."
     >
-      <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.8fr)]">
+      <div className="grid gap-8 xl:grid-cols-[minmax(0,1.12fr)_minmax(320px,0.88fr)]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,11 +51,11 @@ export function AboutSection() {
             analytical interfaces for real users.
           </p>
 
-          <div className="mt-8 grid gap-4">
+          <div className="mt-8 grid gap-4 xl:grid-cols-2">
             {aboutHighlights.map((item) => (
               <div
                 key={item}
-                className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
+                className="flex h-full items-start gap-4 rounded-2xl border border-white/10 bg-white/5 px-4 py-4"
               >
                 <div className="mt-1 rounded-full border border-cyan-400/20 bg-cyan-400/10 p-2 text-cyan-200">
                   <ArrowUpRight className="h-4 w-4" />
@@ -67,6 +67,8 @@ export function AboutSection() {
         </motion.div>
 
         <div className="grid gap-5">
+          
+
           {cards.map((card, index) => {
             const Icon = card.icon;
 
