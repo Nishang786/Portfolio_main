@@ -191,6 +191,19 @@ export const skillGroups: SkillGroup[] = [
 // ── Experience ────────────────────────────────────────────────
 export const experienceItems: ExperienceItem[] = [
   {
+    role: "AI & Data Analytics Engineer",
+    company: "Sontai",
+    location: "Maynooth, Ireland",
+    period: "May 2026 – Present",
+    summary:
+      "I am engineering a modular Python and Streamlit AI analytics application for maintainable, LLM-driven insight generation and reproducible local execution.",
+    highlights: [
+      "Engineered a modular Python/Streamlit AI application with separated agents, workflows, graph, models, and utils layers to support maintainable LLM-driven insight generation.",
+      "Implemented structured insight generation using prompt orchestration, JSON schema validation, API integration, and Docker-based environment setup for reproducible local execution.",
+    ],
+    techUsed: ["Python", "Streamlit", "LLMs", "Prompt Engineering", "JSON Schema", "APIs", "Docker"],
+  },
+  {
     role: "Python Developer",
     company: "Com1 Communication Technologies Pvt. Ltd.",
     location: "India (Remote)",
